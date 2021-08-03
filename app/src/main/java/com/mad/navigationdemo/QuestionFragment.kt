@@ -34,7 +34,6 @@ class QuestionFragment : Fragment() {
             text = "What is FMCO?",
             answers = listOf(
                 "Full Movement Control Oder",
-
                 "Fun Movement Control Oder",
                 "Forever Movement Control Oder"
             )
@@ -85,8 +84,10 @@ class QuestionFragment : Fragment() {
 
                 } else {
                     // todo:: navigate to thankyou fragment
-                    Navigation.findNavController(it).navigate(R.id.action_questionFragment_to_thankyouFragment)
-
+                    //Navigation.findNavController(it).navigate(R.id.action_questionFragment_to_thankyouFragment)
+                        val percentage : Float = (score/ questions.size.toFloat()) * 100
+                    val action = QuestionFragmentDirections.actionQuestionFragmentToThankyouFragment(score, percentage)
+                    Navigation.findNavController(it).navigate(action)
                 }
             }else {
                 Toast.makeText(context, "please select answer", Toast.LENGTH_LONG).show()
